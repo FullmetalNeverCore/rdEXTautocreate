@@ -1,0 +1,11 @@
+{
+    "displayName": "7.77 Calamity",
+    "fm": 7.77,
+    "icon": "UIIcon.alcohol_absynth",
+    "customIcon": {
+        "inkAtlasPath": "base\\icon\\edgerunnerAtlas.inkatlas",
+        "inkAtlasPart": "icon_part",
+        "useCustom": false
+    },
+    "volume": 1.0
+}
