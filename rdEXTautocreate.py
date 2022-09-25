@@ -33,7 +33,7 @@ class MData():
         self.init_file.truncate()
         print("DUMPED")
         
-    def song_writter(self):
+    def song_writter(self): 
         print("Preparing to dump wav names.")
         timecodes = []
         list_names = [x for x in os.listdir('./') if '.wav' in x]
@@ -46,8 +46,6 @@ class MData():
             final_lines[f'{main.dtc.name_station}\\{x}'] = int(duration)
         self.xd.x = final_lines
 
-    def checker(self):
-        print(f'''{self.xd.x}''')
 
 class Main:
     dtc = DataToChnage('1','1','1','1','1')
@@ -74,11 +72,6 @@ class Main:
             
 
 if __name__ == "__main__":
-    '''
-        md = MData('metadata')
-    md.overwritter('displayName','1')
-    md.dumper()
-    '''
     global main 
     main = Main
     main.start()
