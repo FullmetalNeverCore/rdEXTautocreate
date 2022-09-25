@@ -23,7 +23,7 @@ class MData():
         self.init_file = open(f'./{fn}.json','r+')  
         self.xd = XData({'0'})
 
-    def overwritter(self,option,val):
+    def overwriter(self,option,val):
         self.xd.x = ujson.load(self.init_file)
         self.init_file.seek(0)
         self.xd.x[str(option)] = str(val) if type(val) == str else float(val)
@@ -33,7 +33,7 @@ class MData():
         self.init_file.truncate()
         print("DUMPED")
         
-    def song_writter(self): 
+    def song_writer(self): 
         print("Preparing to dump wav names.")
         timecodes = []
         list_names = [x for x in os.listdir('./') if '.wav' in x]
@@ -56,15 +56,15 @@ class Main:
         main.dtc.name_station = input("Input name of station: ")
         main.dtc.fm = input("Input name of fm: ")
         print(f"{main.dtc.filename} {main.dtc.opt} {main.dtc.val} {main.dtc.name_station}")
-        main.writter()
+        main.writer()
     
-    def writter():
+    def writer():
             md = MData(f'metadata')
-            md.overwritter(f'displayName',f'{main.dtc.name_station}')
-            md.overwritter(f'fm',float(main.dtc.fm))
+            md.overwriter(f'displayName',f'{main.dtc.name_station}')
+            md.overwriter(f'fm',float(main.dtc.fm))
             md.dumper()
             md = MData(f'songInfos')
-            md.song_writter()
+            md.song_writer()
             md.dumper()
 
 
