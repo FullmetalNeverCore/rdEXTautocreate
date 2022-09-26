@@ -23,10 +23,13 @@ class MData():
         self.init_file = open(f'./{fn}.json','r+')  
         self.xd = XData({'0'})
 
-    def overwriter(self,option,val):
+    def overwriter(self,option,val,valsec,optionsec = False):
         self.xd.x = ujson.load(self.init_file)
         self.init_file.seek(0)
-        self.xd.x[str(option)] = str(val) if type(val) == str else float(val)
+        self.xd.x[str(option)] = str(val) if isinstance(val, str)  else float(val)
+        if optionsec != False:
+            print("NOT FALSE")
+            self.xd.x[str(optionsec)] = str(valsec) if isinstance(valsec, str)  else float(valsec)
 
     def dumper(self):
         ujson.dump(self.xd.x,self.init_file,indent=4)
@@ -56,12 +59,11 @@ class Main:
         main.dtc.name_station = input("Input name of station: ")
         main.dtc.fm = input("Input name of fm: ")
         print(f"{main.dtc.filename} {main.dtc.opt} {main.dtc.val} {main.dtc.name_station}")
-        main.writer()
+        main.writter()
     
-    def writer():
+    def writter():
             md = MData(f'metadata')
-            md.overwriter(f'displayName',f'{main.dtc.name_station}')
-            md.overwriter(f'fm',float(main.dtc.fm))
+            md.overwriter(f'displayName',f'{main.dtc.name_station}',float(main.dtc.fm),f'fm')
             md.dumper()
             md = MData(f'songInfos')
             md.song_writer()
